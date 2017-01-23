@@ -1,29 +1,34 @@
+/*
+ * Bluetooth Basic: Led On Off
+ * Coder - Toni Anguera
+ * This program lets you to control the LED on the pin 13 using the HC05 bluetooth module
+ */
+
+//******  Includes  ****************
 #include <SoftwareSerial.h>
-int led13=13;
-char estado='c';
+
+//******  Variables  ***************
+int led=13;
+char state='c';
 
 void setup(){
   Serial.begin(38400);
 
-  pinMode(led13,OUTPUT);
-  digitalWrite(led13,HIGH);
+  pinMode(led,OUTPUT);
+  digitalWrite(led,HIGH);
   delay(2000);
-  digitalWrite(led13,LOW);
+  digitalWrite(led,LOW);
   
 }
 
 void loop(){
- if(Serial.available()>0){
- estado = Serial.read();
-// }
- if (estado =='a'){
-   digitalWrite(led13,HIGH);
-//   delay(3000);
-//   digitalWrite(led13,LOW);
-  // delay(1000);
+  if(Serial.available()>0){
+  state = Serial.read();
+  if (state =='a'){
+    digitalWrite(led,HIGH);
   }
-if(estado=='b'){
-   digitalWrite(led13,LOW);
+  if(state=='b'){
+    digitalWrite(led,LOW);
   }
  }
  
